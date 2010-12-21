@@ -44,9 +44,10 @@ Add user manual
 
     >>> actor.open("http://localhost/space/")
     >>> actor.getLink('User Manuals').click()
-    >>> actor.getLink(url="context.html").click()
+    >>> actor.open("context.html")
     >>> actor.getLink('User Manual').click()
-
+    
+    >>> print actor.contents
     >>> actor.getControl('Title').value = u'Test Manual'
     >>> actor.getControl('Short Name').value = 'test-manual'
     >>> actor.getControl('Save as Draft').click()
@@ -338,7 +339,7 @@ Photo batching
     >>> actor.open('http://localhost/space/usermanuals/album/image5/')
     >>> print actor.contents
     <html>
-    ...&laquo; Previous photo...
+    ...&laquo; Previous usermanualpage...
     ...Next photo &raquo;...
     <span><a href="http://localhost/space/usermanuals/album/image1/">1</a></span>
     <span><a href="http://localhost/space/usermanuals/album/image2/">2</a></span>
@@ -354,7 +355,7 @@ Fullscreen view
     >>> actor.open('http://localhost/space/usermanuals/album/image5/fullscreen.html')
     >>> print actor.contents
     <div class="photo">
-    ...&laquo; Previous photo...
+    ...&laquo; Previous usermanualpage...
     ...Next photo &raquo;...
     <span><a href="http://localhost/space/usermanuals/album/image1/fullscreen.html">1</a></span>
     <span><a href="http://localhost/space/usermanuals/album/image2/fullscreen.html">2</a></span>

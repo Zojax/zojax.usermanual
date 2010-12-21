@@ -30,7 +30,6 @@
    permission="zojax.ModifyContent"
    set_schema=".interfaces.IUserManualPage"
    interface="zope.app.container.interfaces.IWriteContainer" />
-    </class>
   </class>
 
   <zojax:draft

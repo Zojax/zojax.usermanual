@@ -21,7 +21,7 @@
      name="index.html"
      for="..interfaces.IUserManualPage"
      template="usermanualpage.pt"
-     class=".photo.PhotoView"
+     class=".usermanualpage.UserManualPageView"
      provides="zojax.content.type.interfaces.IContentView"
      permission="zope.View" />
 

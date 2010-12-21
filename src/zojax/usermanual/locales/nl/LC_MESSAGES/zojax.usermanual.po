@@ -47,13 +47,13 @@ msgstr "Previews"
 msgid "Photo is not uploaded."
 msgstr "Foto is niet geüpload."
 
-#: src/zojax/usermanual/browser/photo.py:33
+#: src/zojax/usermanual/browser/usermanualpage.py:33
 #: src/zojax/usermanual/interfaces.py:47
-#: src/zojax/usermanual/photo.zcml:7
+#: src/zojax/usermanual/usermanualpage.zcml:7
 msgid "Photo"
 msgstr "Foto"
 
-#: src/zojax/usermanual/browser/photo.zcml:15
+#: src/zojax/usermanual/browser/usermanualpage.zcml:15
 #: src/zojax/usermanual/browser/upload.pt:24
 msgid "Upload"
 msgstr "Upload"
@@ -132,7 +132,7 @@ msgstr "Selecteer bestand"
 
 #: src/zojax/usermanual/browser/upload.pt:8
 msgid "Upload ZIP/TAR file with images to be uploaded to the Photo Album. <br /> Make sure you have only folders and images in the ZIP/TAR file. <br /> NOTE: You need to fill the Metadata (such as title and description) for all the images uploaded."
-msgstr "Upload ZIP/TAR-bestand met de afbeeldingen voor het fotoalbum. <br /> Zorg ervoor dat u alleen mappen en afbeeldingen in het ZIP/TAR-bestand plaatst. <br /> NB: U moet metagegevens (zoals de titel en beschrijving) invullen voor alle afbeeldingen die worden geüpload."
+msgstr "Upload ZIP/TAR-bestand met de afbeeldingen voor het fotousermanual. <br /> Zorg ervoor dat u alleen mappen en afbeeldingen in het ZIP/TAR-bestand plaatst. <br /> NB: U moet metagegevens (zoals de titel en beschrijving) invullen voor alle afbeeldingen die worden geüpload."
 
 #: src/zojax/usermanual/browser/upload.py:70
 msgid "Files have been uploaded."
@@ -148,7 +148,7 @@ msgid "Photo Album"
 msgstr "Fotoalbum"
 
 #: src/zojax/usermanual/configure.zcml:24
-msgid "Simple photo album."
+msgid "Simple photo usermanual."
 msgstr "Simpel fotoalbum"
 
 #: src/zojax/usermanual/interfaces.py:100
@@ -191,7 +191,7 @@ msgstr "Aantal pagina's"
 msgid "Number of usermanuals on page."
 msgstr "Aantal foto's op een pagina."
 
-#: src/zojax/usermanual/photo.zcml:7
+#: src/zojax/usermanual/usermanualpage.zcml:7
 msgid "Photo with previews."
 msgstr "Foto met previews."
 

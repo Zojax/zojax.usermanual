@@ -18,7 +18,7 @@ $Id$
 from zope import interface, schema
 from zope.i18nmessageid import MessageFactory
 
-from zojax.filefield.field import FileField
+from zojax.richtext.field import RichText
 from zojax.content.type.interfaces import IItem
 from zojax.content.feeds.interfaces import IRSS2Feed
 from zojax.content.space.interfaces import IWorkspace, IWorkspaceFactory
@@ -56,7 +56,7 @@ class IUserManualProduct(interface.Interface):
     """ usermanual product """
 
 
-class IUserManualsWorkspace(IWorkspace):
+class IUserManualsWorkspace(IItem, IWorkspace):
     """ user manuals workspace """
 
 

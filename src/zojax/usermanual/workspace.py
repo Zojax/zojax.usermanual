@@ -23,7 +23,7 @@ from zojax.content.space.interfaces import IContentSpace
 from zojax.content.space.workspace import WorkspaceFactory
 from zojax.content.type.container import ContentContainer
 
-from interfaces import IUserManualsWorkspace, IUserManualsWorkspaceFactory
+from interfaces import _, IUserManualsWorkspace, IUserManualsWorkspaceFactory
 
 
 class UserManualsWorkspace(ContentContainer):

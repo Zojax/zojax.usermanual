@@ -3,41 +3,35 @@
    xmlns:zcml="http://namespaces.zope.org/zcml">
 
   <!-- activity -->
-  <class class=".album.UserManual"
+  <class class=".usermanual.UserManual"
 	 zcml:condition="installed zojax.activity">
     <implements interface="zojax.activity.interfaces.IActivityAware" />
   </class>
 
   <!-- support extensions -->
-  <class class=".album.UserManual" zcml:condition="installed zojax.extensions">
+  <class class=".usermanual.UserManual" zcml:condition="installed zojax.extensions">
     <implements interface="zojax.extensions.interfaces.IExtensible" />
   </class>
 
   <!-- support sorting -->
-  <class class=".album.UserManual" zcml:condition="installed zojax.content.sorting">
+  <class class=".usermanual.UserManual" zcml:condition="installed zojax.content.sorting">
     <implements interface="zojax.content.sorting.interfaces.ISortable" />
   </class>
 
   <!-- tagging -->
-  <class class=".album.UserManual"
+  <class class=".usermanual.UserManual"
 	 zcml:condition="installed zojax.content.tagging">
     <implements interface="zojax.content.tagging.interfaces.IContentTaggable" />
   </class>
 
   <!-- tags -->
-  <class class=".photo.Photo"
+  <class class=".usermanualpage.UserManualPage"
 	 zcml:condition="installed zojax.content.tagging">
     <implements interface="zojax.content.tagging.interfaces.IContentTaggable" />
   </class>
 
-  <!-- discussion -->
-  <class class=".photo.Photo"
-	 zcml:condition="installed zojax.content.discussion">
-    <implements interface="zojax.content.discussion.interfaces.IOpenDiscussible" />
-  </class>
-
   <!-- activity -->
-  <class class=".photo.Photo"
+  <class class=".usermanualpage.UserManualPage"
 	 zcml:condition="installed zojax.activity">
     <implements interface="zojax.activity.interfaces.IActivityAware" />
   </class>

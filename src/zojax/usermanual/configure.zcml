@@ -13,7 +13,7 @@
   <permission
      id="zojax.SubmitUserManualPage"
      title="Submit user manual page"
-     description="Allow submit user manual page to portal photo album." />
+     description="Allow submit user manual page to portal photo usermanual." />
      
   <permission
      id="zojax.AddUserManual"
@@ -23,7 +23,7 @@
   <permission
      id="zojax.SubmitUserManual"
      title="Submit user manual"
-     description="Allow submit user manual to portal photo album." />
+     description="Allow submit user manual to portal photo usermanual." />
 
    <interface
      name="User Manuals"

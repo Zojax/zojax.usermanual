@@ -47,12 +47,12 @@ msgstr ""
 msgid "Photo is not uploaded."
 msgstr ""
 
-#: src/zojax/usermanual/browser/photo.py:33
-#: src/zojax/usermanual/interfaces.py:47 src/zojax/usermanual/photo.zcml:7
+#: src/zojax/usermanual/browser/usermanualpage.py:33
+#: src/zojax/usermanual/interfaces.py:47 src/zojax/usermanual/usermanualpage.zcml:7
 msgid "Photo"
 msgstr ""
 
-#: src/zojax/usermanual/browser/photo.zcml:15
+#: src/zojax/usermanual/browser/usermanualpage.zcml:15
 #: src/zojax/usermanual/browser/upload.pt:24
 msgid "Upload"
 msgstr ""
@@ -151,7 +151,7 @@ msgid "Photo Album"
 msgstr ""
 
 #: src/zojax/usermanual/configure.zcml:24
-msgid "Simple photo album."
+msgid "Simple photo usermanual."
 msgstr ""
 
 #: src/zojax/usermanual/interfaces.py:100
@@ -194,6 +194,6 @@ msgstr ""
 msgid "Number of usermanuals on page."
 msgstr ""
 
-#: src/zojax/usermanual/photo.zcml:7
+#: src/zojax/usermanual/usermanualpage.zcml:7
 msgid "Photo with previews."
 msgstr ""
