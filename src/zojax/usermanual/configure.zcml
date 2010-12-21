@@ -1,0 +1,125 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zcml="http://namespaces.zope.org/zcml"
+   xmlns:i18n="http://namespaces.zope.org/i18n"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.usermanual">
+
+  <permission
+     id="zojax.AddUserManualPage"
+     title="Add user manual page"
+     description="Allow add new user manual page to portal." />
+
+  <permission
+     id="zojax.SubmitUserManualPage"
+     title="Submit user manual page"
+     description="Allow submit user manual page to portal photo album." />
+     
+  <permission
+     id="zojax.AddUserManual"
+     title="Add user manual"
+     description="Allow add new user manual to portal." />
+
+  <permission
+     id="zojax.SubmitUserManual"
+     title="Submit user manual"
+     description="Allow submit user manual to portal photo album." />
+
+   <interface
+     name="User Manuals"
+     interface=".interfaces.IUserManualType"
+     type="zojax.content.type.interfaces.IContentTypeType" />
+
+  <zojax:product
+     name="usermanual"
+     title="User Manual"
+     description="Simple user manual for zojax."
+     schema=".interfaces.IUserManualProduct"
+     configurable="True" />
+
+  <registerIn registry="zojax.product.usermanual">
+
+    <!-- User Manual -->
+    <zojax:content
+       title="User Manual"
+       name="content.usermanual"
+       description="Simple user manual."
+       class=".usermanual.UserManual"
+       schema=".interfaces.IUserManual"
+       contenttype=".interfaces.IUserManualType"
+       contains="content.usermanualpage"
+       containers="workspace.usermanuals"
+       type=".interfaces.IUserManualPageType
+             zojax.content.type.interfaces.IActivePortalType"
+       permission="zojax.AddUserManual" />
+
+    <class class=".usermanual.UserManual">
+      <implements interface="zojax.ownership.interfaces.IOwnerAware" />
+      <implements interface="zojax.content.type.interfaces.IShareableContent" />
+      <implements interface="zojax.content.type.interfaces.ISearchableContent" />
+      <implements interface="zojax.content.type.interfaces.IContainerContentsAware" />
+      <implements interface="zojax.content.type.interfaces.ITitleBasedName" />
+
+      <require
+	 permission="zope.View"
+	 interface=".interfaces.IUserManual
+                    zope.app.container.interfaces.IReadContainer" />
+      <require
+	 permission="zojax.ModifyContent"
+	 set_schema=".interfaces.IUserManual"
+	 interface="zope.app.container.interfaces.IWriteContainer" />
+    </class>
+    
+    <zojax:draft
+       content="content.usermanual"
+       publish="zojax.AddUserManual"
+       submit="zojax.SubmitUserManual" />
+
+    <!-- photo -->
+    <include file="usermanualpage.zcml" />
+
+    <!-- usermanuals worksapce -->
+    <include file="workspace.zcml" />
+
+    <!-- rss feeds -->
+    <include file="feeds.zcml" />
+
+    <!-- browser views -->
+    <include package=".browser" />
+
+    <!-- permissions -->
+    <zojax:permission
+       permission="zojax.AddUserManual"
+       category="zojax.content.permissions.interfaces.IAddPermission" />
+
+    <zojax:permission
+       permission="zojax.SubmitUserManual"
+       category="zojax.content.permissions.interfaces.ISubmitPermission" />
+
+    <zojax:contentpermission
+       permission="zojax.AddUserManual"
+       for="zojax.content.space.interfaces.ISpace"
+       workspace="usermanuals"
+       managepermission="zojax.ManageContentPermission"
+       class="zojax.content.space.permission.SpacePermission"
+       category="zojax.content.permissions.interfaces.IAddPermission"
+       provides="zojax.content.space.interfaces.ISpacePermission" />
+
+    <zojax:contentpermission
+       permission="zojax.SubmitUserManual"
+       for="zojax.content.space.interfaces.IContentSpace"
+       workspace="usermanuals"
+       managepermission="zojax.ManageContentPermission"
+       class="zojax.content.space.permission.SpacePermission"
+       category="zojax.content.permissions.interfaces.ISubmitPermission"
+       provides="zojax.content.space.interfaces.ISpacePermission" />
+
+  </registerIn>
+
+  <!-- capabilities -->
+  <include file="capability.zcml" />
+
+  <!-- translations -->
+  <i18n:registerTranslations directory="locales"/>
+
+</configure>

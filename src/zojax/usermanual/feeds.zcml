@@ -1,0 +1,24 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope">
+
+  <adapter 
+     name="usermanuals"
+     factory=".feeds.UserManualsRSSFeed" />
+
+  <class class=".feeds.UserManualsRSSFeed">
+    <require
+       permission="zope.View"
+       interface="zojax.content.feeds.interfaces.IFeed" />
+  </class>
+
+  <adapter 
+     name="usermanuals"
+     factory=".feeds.UserManualManualsRSSFeed" />
+
+  <class class=".feeds.UserManualManualsRSSFeed">
+    <require
+       permission="zope.View"
+       interface="zojax.content.feeds.interfaces.IFeed" />
+  </class>
+
+</configure>

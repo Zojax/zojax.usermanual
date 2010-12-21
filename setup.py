@@ -11,7 +11,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-""" Setup for zojax.photoalbum package
+""" Setup for zojax.usermanual package
 
 $Id$
 """
@@ -24,11 +24,11 @@ def read(*rnames):
 version='1.3.8dev'
 
 
-setup(name = 'zojax.photoalbum',
+setup(name = 'zojax.usermanual',
       version = version,
-      author = 'Nikolay Kim',
-      author_email = 'fafhrd91@gmail.com',
-      description = "Photo Album for zojax.",
+      author = 'Anatoly Bubenkov',
+      author_email = 'bubenkoff@gmail.com',
+      description = "User Manual Tool for zojax.",
       long_description = (
           'Detailed Documentation\n' +
           '======================\n'
@@ -74,13 +74,8 @@ setup(name = 'zojax.photoalbum',
                           'zojax.personal.space',
                           'zojax.personal.content',
                           'zojax.product',
-                          'zojax.controlpanel',
-                          'zojax.converter',
-                          'zojax.filefield',
                           'zojax.statusmessage',
-                          'zojax.resourcepackage',
-                          'zojax.jquery.lightbox',
-                          'zojax.jquery.multifile',
+                          'zojax.richtext'
                           ],
       extras_require = dict(test=['zope.app.testing',
                                   'zope.testing',

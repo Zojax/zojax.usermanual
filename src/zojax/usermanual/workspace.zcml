@@ -1,0 +1,44 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.usermanual">
+
+  <zojax:reservedNames
+     names="usermanuals"
+     for="zojax.content.space.interfaces.IContentSpace" />
+
+  <zojax:content
+     name="workspace.usermanuals"
+     title="User Manuals Workspace"
+     class=".workspace.UserManualsWorkspace"
+     schema=".interfaces.IUserManualsWorkspace"
+     contains="content.usermanual"
+     type="zojax.content.type.interfaces.IInactiveType" />
+
+  <!-- usermanuals workspace -->
+  <class class=".workspace.UserManualsWorkspace">
+    <implements interface="zojax.catalog.interfaces.ISearchContext" />
+    <implements interface="zojax.extensions.interfaces.IExtensible" />
+    <implements interface="zojax.ownership.interfaces.IInheritOwnership" />
+    <implements interface="zojax.content.type.interfaces.IRenameNotAllowed" />
+    <implements interface="zojax.content.type.interfaces.ISearchableContent" />
+    <implements interface="zojax.content.type.interfaces.IUnremoveableContent" />
+    <implements interface="zojax.content.tagging.interfaces.IContentTaggable" />
+
+    <require
+       permission="zope.View"
+       interface=".interfaces.IUserManualsWorkspace
+		  zope.app.container.interfaces.IReadContainer" />
+    <require
+       permission="zojax.ModifyContent"
+       set_schema=".interfaces.IUserManualsWorkspace"
+       interface="zope.app.container.interfaces.IWriteContainer" />
+  </class>
+
+  <!-- usermanuals workspace factory -->
+  <adapter
+     name="usermanuals"
+     factory=".workspace.UserManualsWorkspaceFactory" />
+
+</configure>

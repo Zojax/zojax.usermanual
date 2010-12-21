@@ -1,0 +1,33 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.usermanual">
+
+  <!-- rss action -->
+  <adapter
+     name="usermanual.rss"
+     factory=".actions.UserManualRSSFeedAction" />
+
+  <browser:icon
+     name="zmi_icon"
+     file="icons/rss.png"
+     for=".interfaces.IUserManualRSSFeedAction" />
+
+  <!-- back to manual action -->
+  <adapter
+     name="usermanual.back"
+     provides="zojax.content.actions.interfaces.IContentAction"
+     factory=".actions.ViewUserManualAction" />
+
+  <adapter
+     name="usermanual.back"
+     provides="zojax.content.actions.interfaces.IContextAction"
+     factory=".actions.ContextViewUserManualAction" />
+
+  <browser:icon
+     name="zmi_icon"
+     file="icons/usermanual.png"
+     for=".interfaces.IViewUserManualAction" />
+
+</configure>

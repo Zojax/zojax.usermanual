@@ -1,0 +1,68 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.usermanual">
+
+  <!-- User Manual Page -->
+  <zojax:content
+     title="User Manual Page"
+     schema=".interfaces.IUserManualPage"
+     name="content.usermanualpage"
+     class=".usermanualpage.UserManualPage"
+     description="User manual page."
+     contenttype=".interfaces.ISimpleUserManualPageType"
+     type=".interfaces.IUserManualPageType
+           zojax.content.type.interfaces.IActivePortalType"
+     contains="content.usermanualpage"
+     containers=".interfaces.IUserManulaPageType"
+     permission="zojax.AddUserManualPage" />
+    
+  <class class=".usermanualpage.UserManualPage">
+    <implements interface="zojax.ownership.interfaces.IOwnerAware" />
+    <implements interface="zojax.content.type.interfaces.ISearchableContent" />
+    <implements interface="zojax.content.type.interfaces.ITitleBasedName" />
+
+    <require
+   permission="zope.View"
+   interface=".interfaces.IUserManualPage
+                    zope.app.container.interfaces.IReadContainer" />
+      <require
+   permission="zojax.ModifyContent"
+   set_schema=".interfaces.IUserManualPage"
+   interface="zope.app.container.interfaces.IWriteContainer" />
+    </class>
+  </class>
+
+  <zojax:draft
+     content="content.usermanualpage"
+     publish="zojax.AddUserManualPage"
+     submit="zojax.SubmitUserManualPage" />
+
+  <!-- permissions -->
+  <zojax:permission
+     permission="zojax.AddUserManualPage"
+     category="zojax.content.permissions.interfaces.IAddPermission" />
+
+  <zojax:permission
+     permission="zojax.SubmitUserManualPage"
+     category="zojax.content.permissions.interfaces.ISubmitPermission" />
+
+  <zojax:contentpermission
+     permission="zojax.AddUserManualPage"
+     for="zojax.content.space.interfaces.ISpace"
+     workspace="usermanuals"
+     managepermission="zojax.ManageContentPermission"
+     class="zojax.content.space.permission.SpacePermission"
+     category="zojax.content.permissions.interfaces.IAddPermission"
+     provides="zojax.content.space.interfaces.ISpacePermission" />
+
+  <zojax:contentpermission
+     permission="zojax.SubmitUserManualPage"
+     for="zojax.content.space.interfaces.ISpace"
+     workspace="usermanuals"
+     managepermission="zojax.ManageContentPermission"
+     class="zojax.content.space.permission.SpacePermission"
+     category="zojax.content.permissions.interfaces.ISubmitPermission"
+     provides="zojax.content.space.interfaces.ISpacePermission" />
+
+</configure>

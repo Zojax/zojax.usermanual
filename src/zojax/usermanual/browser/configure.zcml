@@ -1,0 +1,75 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.usermanual">
+
+  <include file="actions.zcml" />
+
+  <!-- User Manual Page -->
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IUserManualPage"
+     file="icons/usermanualpage.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IUserManualPageType"
+     file="icons/usermanualpage.png" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IUserManualPage"
+     template="usermanualpage.pt"
+     class=".photo.PhotoView"
+     provides="zojax.content.type.interfaces.IContentView"
+     permission="zope.View" />
+
+
+  <!-- Photo Album -->
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IUserManual"
+     file="icons/usermanual.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IUserManualType"
+     file="icons/usermanual.png" />
+
+  <browser:defaultView
+     name="index.html"
+     for="..interfaces.IUserManual" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IUserManual"
+     template="usermanual.pt"
+     class=".usermanual.UserManualView"
+     provides="zojax.content.type.interfaces.IContentView"
+     permission="zope.View" />
+
+  <!-- workspace -->
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IUserManualsWorkspace"
+     file="./icons/usermanuals.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IUserManualsWorkspaceFactory"
+     file="./icons/usermanuals.png" />
+
+  <browser:icon
+     name="zmi_icon"
+     for="..interfaces.IUserManualsRSSFeed"
+     file="./icons/usermanuals.png" />
+
+  <!-- resources -->
+  <zojax:resourceinclude
+     type="stylesheet"
+     name="zojax-usermanual.css"
+     library="zojax.usermanual"
+     file="usermanual.css" filetype="zrt" />
+
+</configure>
