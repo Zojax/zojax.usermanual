@@ -34,7 +34,17 @@ class IUserManualItem(IItem):
 
 class IUserManualPage(IUserManualItem):
     """ user manual page """
-
+    
+    number = interface.Attribute('number')
+    
+    position = interface.Attribute('position')
+    
+    next = interface.Attribute('next')
+    
+    previous = interface.Attribute('previous')
+    
+    parent = interface.Attribute('parent')
+    
 
 class IUserManualPageType(interface.Interface):
     """ user manual page content type """

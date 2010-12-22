@@ -21,7 +21,7 @@ from zope.traversing.browser import absoluteURL
 from zojax.layoutform import Fields
 from zojax.filefield.field import FileField
 from zojax.resourcepackage.library import include
-from zojax.content.type.interfaces import IDraftedContent
+from zojax.content.type.interfaces import IDraftedContent, IOrder
 
 from zojax.usermanual.interfaces import _, IUserManualPage
 
@@ -30,3 +30,4 @@ class UserManualPageView(object):
 
     def update(self):
         include('zojax.usermanual')
+        self.items = IOrder(self.context).values()

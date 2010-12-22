@@ -11,6 +11,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+from zojax.content.type.interfaces import IOrder
 """
 
 $Id$
@@ -30,6 +31,8 @@ from interfaces import IUserManualPageView
 
 class UserManualView(object):
     interface.implements(IUserManualPageView)
+    
+    items = []
 
     def update(self):
         include('zojax.usermanual')
@@ -37,3 +40,4 @@ class UserManualView(object):
         product = getUtility(IUserManualProduct)
 
         self.url = absoluteURL(self.context, self.request)
+        self.items = IOrder(self.context).values()

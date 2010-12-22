@@ -44,11 +44,11 @@ Add user manual
 
     >>> actor.open("http://localhost/space/")
     >>> actor.getLink('User Manuals').click()
-    >>> actor.open("context.html")
-    >>> actor.getLink('User Manual').click()
+    >>> actor.open("context.html/contents")
+    >>> actor.getLink('User Manual', url="+/content.usermanual").click()
     
-    >>> print actor.contents
     >>> actor.getControl('Title').value = u'Test Manual'
+    >>> actor.getControl('Body').value = u'Test Body'
     >>> actor.getControl('Short Name').value = 'test-manual'
     >>> actor.getControl('Save as Draft').click()
 
@@ -69,10 +69,6 @@ Add user manual
             (Space)</a>
        </span>
     </h1>
-    ...
-    <p>
-      No albums or usermanuals uploaded yet.
-    </p>
     ...
     </html>
 

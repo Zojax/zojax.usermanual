@@ -14,13 +14,14 @@
      type=".interfaces.IUserManualPageType
            zojax.content.type.interfaces.IActivePortalType"
      contains="content.usermanualpage"
-     containers=".interfaces.IUserManulaPageType"
+     containers=".interfaces.IUserManualPageType"
      permission="zojax.AddUserManualPage" />
     
   <class class=".usermanualpage.UserManualPage">
     <implements interface="zojax.ownership.interfaces.IOwnerAware" />
     <implements interface="zojax.content.type.interfaces.ISearchableContent" />
     <implements interface="zojax.content.type.interfaces.ITitleBasedName" />
+    <implements interface="zojax.content.type.interfaces.IAnnotatableOrder" />
 
     <require
    permission="zope.View"

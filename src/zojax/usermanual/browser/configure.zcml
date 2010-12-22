@@ -24,6 +24,13 @@
      class=".usermanualpage.UserManualPageView"
      provides="zojax.content.type.interfaces.IContentView"
      permission="zope.View" />
+     
+  <zojax:pagelet
+     name="usermanualpage.listitem"
+     for="..interfaces.IUserManualPage"
+     template="usermanualpagelistitem.pt"
+     class=".usermanualpage.UserManualPageView"
+     permission="zope.View" />
 
 
   <!-- Photo Album -->
@@ -40,6 +47,10 @@
   <browser:defaultView
      name="index.html"
      for="..interfaces.IUserManual" />
+     
+  <browser:defaultView
+     name="index.html"
+     for="..interfaces.IUserManualPage" />
 
   <zojax:pagelet
      name="index.html"

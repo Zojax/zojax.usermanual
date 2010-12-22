@@ -59,6 +59,7 @@
       <implements interface="zojax.content.type.interfaces.ISearchableContent" />
       <implements interface="zojax.content.type.interfaces.IContainerContentsAware" />
       <implements interface="zojax.content.type.interfaces.ITitleBasedName" />
+      <implements interface="zojax.content.type.interfaces.IAnnotatableOrder" />
 
       <require
 	 permission="zope.View"
@@ -75,7 +76,7 @@
        publish="zojax.AddUserManual"
        submit="zojax.SubmitUserManual" />
 
-    <!-- photo -->
+    <!-- usermanual page -->
     <include file="usermanualpage.zcml" />
 
     <!-- usermanuals worksapce -->

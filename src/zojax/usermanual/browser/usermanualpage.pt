@@ -1,14 +1,26 @@
-<tal:block define="usermanuals view/usermanuals" condition="usermanuals"
-	   content="structure usermanuals/@@pagelet" />
+<div i18n:domain="zojax.usermanual">
 
-<div class="photo" tal:condition="context/data/size">
-  <a tal:define="url string:${context/@@absolute_url}"
-     tal:attributes="href string:$url/fullscreen.html; title context/title">
-    <img tal:attributes="src string:$url/preview/${view/width}x${view/height}/" />
-  </a>
+  <div class="body" tal:content="structure context/body/cooked" />
+
+  <ul tal:condition="python:context.next is not None or context.previous is not None or context.parent is not None">
+    <li class="next" tal:define="context context/next" tal:condition="python:context is not None">
+      <a tal:attributes="href string:${context/@@absolute_url}/">
+        Next:
+        <tal:block tal:content="string:${context/number} ${context/title}" />
+      </a>
+    </li>
+    <li class="previous" tal:define="context context/previous" tal:condition="python:context is not None">
+      <a tal:attributes="href string:${context/@@absolute_url}/">
+        Previous:
+        <tal:block tal:content="string:${context/number} ${context/title}" />
+      </a>
+    </li>
+    <li class="parent" tal:define="context context/parent" tal:condition="python:context is not None">
+      <a tal:attributes="href string:${context/@@absolute_url}/">
+        Parent:
+        <tal:block tal:condition="not:context/number|nothing" tal:content="string:${context/title}" />
+        <tal:block tal:condition="context/number|nothing" tal:content="string:${context/number} ${context/title}" />
+      </a>
+    </li>
+  </ul>
 </div>
-
-<tal:block condition="not:context/data/size" i18n:domain="zojax.usermanual">
-  <br />
-  <tal:block i18n:translate="">Photo is not uploaded.</tal:block>
-</tal:block>

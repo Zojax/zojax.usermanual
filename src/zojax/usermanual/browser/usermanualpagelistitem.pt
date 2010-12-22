@@ -1,0 +1,9 @@
+<li>
+  <a tal:attributes="href string:${context/@@absolute_url}/" tal:content="string: ${context/number} ${context/title}" />
+  <tal:block content="context/description" />
+  <ul class="user-manualpage-entry"
+      tal:condition="view/items"
+      tal:repeat="item view/items">
+      <tal:block define="context item" content="structure pagelet:+usermanualpage.listitem" />
+  </ul>
+</li>  
