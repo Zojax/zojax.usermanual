@@ -21,7 +21,6 @@
     <implements interface="zojax.ownership.interfaces.IOwnerAware" />
     <implements interface="zojax.content.type.interfaces.ISearchableContent" />
     <implements interface="zojax.content.type.interfaces.ITitleBasedName" />
-    <implements interface="zojax.content.type.interfaces.IAnnotatableOrder" />
     <implements interface="zojax.content.type.interfaces.IContainerContentsAware" />
 
     <require
@@ -66,4 +65,6 @@
      category="zojax.content.permissions.interfaces.ISubmitPermission"
      provides="zojax.content.space.interfaces.ISpacePermission" />
 
+  <adapter factory=".usermanualpage.UserManualPageOrder" />
+  
 </configure>

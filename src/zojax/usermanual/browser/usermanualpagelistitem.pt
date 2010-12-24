@@ -1,5 +1,5 @@
 <li>
-  <a tal:attributes="href string:${context/@@absolute_url}/" tal:content="string: ${context/number} ${context/title}" />
+  <a tal:attributes="href string:${context/@@absolute_url}/" tal:content="string: ${context/fullNumber} ${context/title}" />
   <tal:block content="context/description" />
   <ul class="user-manualpage-entry"
       tal:condition="view/items"

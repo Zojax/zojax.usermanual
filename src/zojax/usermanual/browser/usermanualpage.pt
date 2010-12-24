@@ -6,20 +6,20 @@
     <li class="next" tal:define="context context/next" tal:condition="python:context is not None">
       <a tal:attributes="href string:${context/@@absolute_url}/">
         Next:
-        <tal:block tal:content="string:${context/number} ${context/title}" />
+        <tal:block tal:content="string:${context/fullNumber} ${context/title}" />
       </a>
     </li>
     <li class="previous" tal:define="context context/previous" tal:condition="python:context is not None">
       <a tal:attributes="href string:${context/@@absolute_url}/">
         Previous:
-        <tal:block tal:content="string:${context/number} ${context/title}" />
+        <tal:block tal:content="string:${context/fullNumber} ${context/title}" />
       </a>
     </li>
     <li class="parent" tal:define="context context/parent" tal:condition="python:context is not None">
       <a tal:attributes="href string:${context/@@absolute_url}/">
         Parent:
-        <tal:block tal:condition="not:context/number|nothing" tal:content="string:${context/title}" />
-        <tal:block tal:condition="context/number|nothing" tal:content="string:${context/number} ${context/title}" />
+        <tal:block tal:condition="not:context/fullNumber|nothing" tal:content="string:${context/title}" />
+        <tal:block tal:condition="context/fullNumber|nothing" tal:content="string:${context/fullNumber} ${context/title}" />
       </a>
     </li>
   </ul>

@@ -14,11 +14,12 @@
 from zope.traversing.api import getParents
 from zojax.content.type.interfaces import IOrder
 from zojax.usermanual.interfaces import IUserManualPageType
+from zojax.content.type.order import AnnotatableOrder
 """
 
 $Id$
 """
-from zope import interface, component
+from zope import interface, component, schema
 from zope.size import byteDisplay
 from zope.size.interfaces import ISized
 from zope.proxy import removeAllProxies
@@ -34,11 +35,12 @@ class UserManualPage(ContentContainer):
     interface.implements(IUserManualPage)
 
     body = RichTextProperty(IUserManualPage['body'])
+    number = schema.fieldproperty.FieldProperty(IUserManualPage['number'])
 
     @property
-    def number(self):
+    def fullNumber(self):
         if IUserManualPage.providedBy(self.__parent__):
-            return '%s.%s'%(self.__parent__.number, self.position)
+            return '%s.%s'%(self.__parent__.fullNumber, self.position)
         return str(self.position)
     
     @property
@@ -63,3 +65,17 @@ class UserManualPage(ContentContainer):
     def parent(self):
         if IUserManualPageType.providedBy(self.__parent__):
             return self.__parent__
+        
+
+class UserManualPageOrder(AnnotatableOrder):
+    
+    component.adapts(IUserManualPage)
+    interface.implements(IOrder)
+    
+    def generateKey(self, item):
+        keys = self.order.keys()
+        if item.number is None:
+            item.number = 1
+        while item.number in keys:
+            item.number +=1
+        return item.number

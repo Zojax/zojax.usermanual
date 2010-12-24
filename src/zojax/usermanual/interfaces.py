@@ -35,7 +35,11 @@ class IUserManualItem(IItem):
 class IUserManualPage(IUserManualItem):
     """ user manual page """
     
-    number = interface.Attribute('number')
+    number = schema.Int(title=_(u'Page number'),
+                        description=_(u'Defers page position on current page level. So here you control only part that belongs to current page level.'),
+                        min=1)
+    
+    fullNumber = interface.Attribute('fullNumber')
     
     position = interface.Attribute('position')
     
