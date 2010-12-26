@@ -40,8 +40,8 @@ class UserManualPage(ContentContainer):
     @property
     def fullNumber(self):
         if IUserManualPage.providedBy(self.__parent__):
-            return '%s.%s'%(self.__parent__.fullNumber, self.position)
-        return str(self.position)
+            return '%s.%s'%(self.__parent__.fullNumber, self.number)
+        return str(self.number)
     
     @property
     def position(self):
