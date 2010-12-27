@@ -62,11 +62,11 @@
      
   <!-- contents table -->
   <adapter name="fullNumber" factory=".usermanualpage.FullNumberColumn" />
-  <adapter name="fullNumber" for="..interfaces.IUserManualPage * zojax.content.type.interfaces.IContainerContentsTable"
+  <adapter name="fullNumber" for="...interfaces.IUserManualPageType * zojax.content.type.interfaces.IContainerContentsTable"
            factory=".usermanualpage.FullNumberColumn" />
-  <adapter for="..interfaces.IUserManualPage * zojax.content.browser.interfaces.IContainerListing"
+  <adapter for="..interfaces..interfaces.IUserManualPageType * zojax.content.browser.interfaces.IContainerListing"
            factory=".usermanualpage.ContentsTableConfig" />
-  <adapter for="..interfaces.IUserManualPage * zojax.content.type.interfaces.IContainerContentsTable"
+  <adapter for="..interfaces..interfaces.IUserManualPageType * zojax.content.type.interfaces.IContainerContentsTable"
            factory=".usermanualpage.ContentsTableConfig" />
 
   <!-- workspace -->

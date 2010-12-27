@@ -27,7 +27,7 @@ from zojax.table.column import Column
 from zojax.table.interfaces import IDataset, ITableConfiguration
 from zojax.content.browser import table
 
-from zojax.usermanual.interfaces import _, IUserManualPage
+from zojax.usermanual.interfaces import _, IUserManualPage, IUserManualPageType
 
 
 class UserManualPageView(object):
@@ -38,7 +38,7 @@ class UserManualPageView(object):
         
 
 class FullNumberColumn(Column):
-    component.adapts(IUserManualPage, interface.Interface, IContainerListing)
+    component.adapts(IUserManualPageType, interface.Interface, IContainerListing)
 
     name = 'fullNumber'
     title = _('Number')
