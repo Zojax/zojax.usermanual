@@ -1,6 +1,7 @@
 <div i18n:domain="zojax.usermanual">
 
-  <div class="body" tal:content="structure context/body/cooked" />
+  <div class="text"  tal:condition="context/text"
+       tal:content="structure context/text/cooked" />
 
   <ul tal:condition="python:context.next is not None or context.previous is not None or context.parent is not None">
     <li class="next" tal:define="context context/next" tal:condition="python:context is not None">

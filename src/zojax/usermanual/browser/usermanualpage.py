@@ -11,6 +11,8 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+from zojax.layoutform.subform import PageletEditSubForm
+from zojax.content.forms.content import ContentBasicFields
 """
 
 $Id$
@@ -27,7 +29,8 @@ from zojax.table.column import Column
 from zojax.table.interfaces import IDataset, ITableConfiguration
 from zojax.content.browser import table
 
-from zojax.usermanual.interfaces import _, IUserManualPage, IUserManualPageType
+from zojax.usermanual.interfaces import _, IUserManualPage, IUserManualPageType,\
+    IUserManualPageDraft
 
 
 class UserManualPageView(object):
@@ -36,6 +39,22 @@ class UserManualPageView(object):
         include('zojax.usermanual')
         self.items = IOrder(self.context).values()
         
+
+class NumberForm(PageletEditSubForm):
+
+    @property
+    def fields(self):
+        if IDraftedContent.providedBy(self.context):
+            return Fields(IUserManualPageDraft)
+        return Fields()
+    
+    def getContent(self):
+        if IDraftedContent.providedBy(self.context):
+            return self.parentForm.wizard.draft
+
+    def isAvailable(self):
+        return IDraftedContent.providedBy(self.context)
+    
 
 class FullNumberColumn(Column):
     component.adapts(IUserManualPageType, interface.Interface, IContainerListing)
@@ -47,6 +66,16 @@ class FullNumberColumn(Column):
 
     def query(self, default=None):
         return self.content.fullNumber
+    
+    
+class ContentBasicFields(ContentBasicFields):
+    
+    @property
+    def fields(self):
+        res = super(ContentBasicFields, self).fields
+        if IDraftedContent.providedBy(self.context):
+            res = res.omit('fullNumber')
+        return res
     
     
 class ContentsTableConfig(object):

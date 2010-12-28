@@ -19,6 +19,7 @@ from zope import interface, component
 from zope.security import checkPermission
 from zope.security.proxy import removeSecurityProxy
 from zope.traversing.browser import absoluteURL
+from zope.traversing.api import getParents
 
 from zojax.usermanual.interfaces import _
 from zojax.usermanual.interfaces import IUserManualPage, IUserManual, IUserManualsWorkspace
@@ -45,7 +46,7 @@ class BaseViewUserManualAction(object):
         self.request = request
 
     def url(self):
-        return '%s/'%absoluteURL(self.context.__parent__, self.request)
+        return '%s/'%absoluteURL(filter(IUserManual.providedBy, getParents(self.context))[0], self.request)
 
     def isAvailable(self):
         return True

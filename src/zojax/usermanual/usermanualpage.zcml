@@ -36,7 +36,8 @@
   <zojax:draft
      content="content.usermanualpage"
      publish="zojax.AddUserManualPage"
-     submit="zojax.SubmitUserManualPage" />
+     submit="zojax.SubmitUserManualPage"
+     class=".usermanualpage.UserManualPageDraft" />
 
   <!-- permissions -->
   <zojax:permission

@@ -11,6 +11,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+from zojax.content.draft.interfaces import IDraftContent
 """
 
 $Id$
@@ -28,18 +29,19 @@ _ = MessageFactory('zojax.usermanual')
 
 class IUserManualItem(IItem):
     
-    body = RichText(
-        title = _(u'Body'))
+    text = RichText(
+        title = _(u'Text'),
+        required = False)
 
 
 class IUserManualPage(IUserManualItem):
     """ user manual page """
     
-    number = schema.Int(title=_(u'Page number'),
-                        description=_(u'Defers page position on current page level. So here you control only part that belongs to current page level.'),
-                        min=1)
+    number = interface.Attribute('number')
     
-    fullNumber = interface.Attribute('fullNumber')
+    fullNumber = schema.TextLine(title=_(u'Full Page number'),
+                        description=_(u'Period-separated. Defers page position. If parent pages are not existent, they will be autocreated'),
+                        )
     
     position = interface.Attribute('position')
     
@@ -48,6 +50,13 @@ class IUserManualPage(IUserManualItem):
     previous = interface.Attribute('previous')
     
     parent = interface.Attribute('parent')
+    
+    
+class IUserManualPageDraft(interface.Interface):
+    
+    fullNumber = schema.TextLine(title=_(u'Full Page number'),
+                        description=_(u'Period-separated. Defers page position. If parent pages are not existent, they will be autocreated'),
+                        )
     
 
 class IUserManualPageType(interface.Interface):
@@ -58,7 +67,7 @@ class ISimpleUserManualPageType(interface.Interface):
     """ simple user manual page content type """
 
 
-class IUserManual(IUserManualItem):
+class IUserManual(IItem):
     """ user manual """
 
 

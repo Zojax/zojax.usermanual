@@ -32,6 +32,4 @@ from interfaces import IUserManual
 
 class UserManual(ContentContainer):
     interface.implements(IUserManual)
-
-    body = RichTextProperty(IUserManual['body'])
     

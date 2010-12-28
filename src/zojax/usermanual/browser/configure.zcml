@@ -60,6 +60,22 @@
      provides="zojax.content.type.interfaces.IContentView"
      permission="zope.View" />
      
+  <zojax:pagelet
+     name="number"
+     type="form.subform"
+     for="..interfaces.IUserManualPage
+    zojax.content.forms.interfaces.IContentStep"
+     class=".usermanualpage.NumberForm"
+     weight="10" />
+  
+  <zojax:pagelet
+     name="basic"
+     type="form.subform"
+     for="..interfaces.IUserManualPage
+    zojax.content.forms.interfaces.IContentStep"
+     class=".usermanualpage.ContentBasicFields"
+     weight="10" />
+     
   <!-- contents table -->
   <adapter name="fullNumber" factory=".usermanualpage.FullNumberColumn" />
   <adapter name="fullNumber" for="..interfaces.IUserManualPageType * zojax.content.type.interfaces.IContainerContentsTable"

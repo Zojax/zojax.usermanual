@@ -11,10 +11,18 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+import rwproperty
+from zope.component import getUtility
 from zope.traversing.api import getParents
-from zojax.content.type.interfaces import IOrder
-from zojax.usermanual.interfaces import IUserManualPageType
-from zojax.content.type.order import AnnotatableOrder
+from zope.app.container.interfaces import INameChooser
+from zojax.content.type.interfaces import IOrder, IDraftedContent, IContentType,\
+    INameChooserConfiglet
+from zojax.usermanual.interfaces import IUserManualPageType, IUserManual,\
+    IUserManualPageDraft
+from zojax.content.type.order import AnnotatableOrder, Reordable
+from zojax.content.draft.interfaces import IDraftContent, DraftException,\
+    IDraftPublishedEvent
+from zojax.content.draft.draft import DraftContent
 """
 
 $Id$
@@ -24,21 +32,49 @@ from zope.size import byteDisplay
 from zope.size.interfaces import ISized
 from zope.proxy import removeAllProxies
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+from zope.lifecycleevent import ObjectModifiedEvent
 
+from zojax.content.draft.events import DraftPublishedEvent
 from zojax.richtext.field import RichTextProperty
 from zojax.content.type.container import ContentContainer
-
-from interfaces import IUserManualPage
+from interfaces import IUserManualPage, _
 
 
 class UserManualPage(ContentContainer):
     interface.implements(IUserManualPage)
 
-    body = RichTextProperty(IUserManualPage['body'])
-    number = schema.fieldproperty.FieldProperty(IUserManualPage['number'])
+    text = RichTextProperty(IUserManualPage['text'])
+    number = 1
 
-    @property
+    @rwproperty.getproperty
     def fullNumber(self):
+        if IUserManualPage.providedBy(self.__parent__):
+            return '%s.%s'%(self.__parent__.fullNumber, self.number)
+        return str(self.number)
+    
+    @rwproperty.setproperty
+    def fullNumber(self, value):
+        if IDraftedContent.providedBy(self):
+            location = self.__parent__.getLocation()
+            parents = filter(IUserManual.providedBy, [location] + getParents(location))
+        else:
+            parents = filter(IUserManual.providedBy, getParents(self))
+        manual = parents[-1]
+        numbers = map(int, value.split('.'))
+        ct = getUtility(IContentType, name='content.usermanualpage')
+        del self.__parent__[self.__name__]
+        for number in numbers[0:-1]:
+            try:
+                manual = IOrder(manual).getByPosition(number)
+            except KeyError:
+                m = ct.create(_(u'Autocreated page'), _(u'Autocreated page description'))
+                m.number = number
+                ct.__bind__(manual).add(m)
+                manual = m
+        self.number = numbers[-1]
+        manual[INameChooser(manual).chooseName(self.__name__, self)] = self
+        IOrder(self.__parent__).rebuild()
+
         if IUserManualPage.providedBy(self.__parent__):
             return '%s.%s'%(self.__parent__.fullNumber, self.number)
         return str(self.number)
@@ -66,16 +102,25 @@ class UserManualPage(ContentContainer):
         if IUserManualPageType.providedBy(self.__parent__):
             return self.__parent__
         
+        
+class UserManualPageDraft(DraftContent):
+    
+    interface.implements(IUserManualPageDraft)
+    
+    def publish(self, comment=u''):
+        content = super(UserManualPageDraft, self).publish(comment)
+        content.fullNumber = self.fullNumber
+        return content
+    
 
 class UserManualPageOrder(AnnotatableOrder):
     
     component.adapts(IUserManualPage)
-    interface.implements(IOrder)
     
     def generateKey(self, item):
         keys = self.order.keys()
         if item.number is None:
             item.number = 1
         while item.number in keys:
-            item.number +=1
+            item.number += 1
         return item.number

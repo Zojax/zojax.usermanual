@@ -19,7 +19,7 @@
   <securityPolicy
      component="zojax.security.securitypolicy.SecurityPolicy" />
 
-  <role id="zope.Anonymous" title="Everybody"
+  <role id="zope.Anonymous" title="Everytext"
         description="All users have this role implicitly" />
   <role id="zope.Manager" title="Site Manager" />
 
@@ -32,7 +32,7 @@
 
   <!-- Principals -->
   <unauthenticatedPrincipal
-      id="zope.anybody"
+      id="zope.anytext"
       title="Unauthenticated User" />
 
   <!-- Principal that tests generally run as -->
