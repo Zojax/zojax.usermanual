@@ -101,11 +101,4 @@
      for="..interfaces.IUserManualsRSSFeed"
      file="./icons/usermanuals.png" />
 
-  <!-- resources -->
-  <zojax:resourceinclude
-     type="stylesheet"
-     name="zojax-usermanual.css"
-     library="zojax.usermanual"
-     file="usermanual.css" filetype="zrt" />
-
 </configure>

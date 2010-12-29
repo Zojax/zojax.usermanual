@@ -119,6 +119,9 @@
 
   <!-- capabilities -->
   <include file="capability.zcml" />
+  
+  <!-- css -->
+  <include package=".browser" file="styles.zcml" />
 
   <!-- translations -->
   <i18n:registerTranslations directory="locales"/>
