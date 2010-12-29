@@ -89,12 +89,12 @@
   <browser:icon
      name="zmi_icon"
      for="..interfaces.IUserManualsWorkspace"
-     file="./icons/usermanuals.png" />
+     file="./icons/usermanualsworkspace.png" />
 
   <browser:icon
      name="zmi_icon"
      for="..interfaces.IUserManualsWorkspaceFactory"
-     file="./icons/usermanuals.png" />
+     file="./icons/usermanualsworkspace.png" />
 
   <browser:icon
      name="zmi_icon"
