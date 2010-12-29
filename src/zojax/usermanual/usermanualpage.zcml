@@ -39,6 +39,23 @@
      submit="zojax.SubmitUserManualPage"
      class=".usermanualpage.UserManualPageDraft" />
 
+  <!-- draft content class -->
+  <class class=".usermanualpage.UserManualPageDraft">
+
+    <require
+       permission="zope.View"
+       set_attributes="step"
+       interface="zojax.content.draft.interfaces.IDraftContent
+      zojax.content.draft.interfaces.IDraftLocation
+      .interfaces.IUserManualPageDraft" />
+    <require
+       permission="zojax.ModifyContent"
+       set_schema="zojax.content.draft.interfaces.IDraftContent
+       zojax.content.draft.interfaces.IDraftLocation
+       .interfaces.IUserManualPageDraft" />
+  </class>
+  
+
   <!-- permissions -->
   <zojax:permission
      permission="zojax.AddUserManualPage"
