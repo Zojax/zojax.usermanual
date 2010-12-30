@@ -1,14 +1,21 @@
 /* zrt-cssregistry: */
 
-@media all { 
+@media all {
 
-/*  .blogger-footer-categories {
-    background-image: url(blogger-images/category.png);
-  }*/
-.usermanual-next a,
-.usermanual-next a {
+.usermanual-next,
+.usermanual-next {
   padding-left: 20px;
-  background: url(usermanual-images/icon-usermanual-next.gif) no-repeat left center;
+  background: url(usermanual-images/icon-usermanual-right.gif) no-repeat left center;
+}
+.usermanual-previous,
+.usermanual-previous {
+  padding-left: 20px;
+  background: url(usermanual-images/icon-usermanual-left.gif) no-repeat left center;
+}
+.usermanual-parent,
+.usermanual-parent {
+  padding-left: 20px;
+  background: url(usermanual-images/icon-usermanual-top.gif) no-repeat left center;
 }
 
 }
