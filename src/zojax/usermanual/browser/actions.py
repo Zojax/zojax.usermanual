@@ -38,7 +38,7 @@ class BaseViewUserManualAction(object):
     interface.implements(IContentAction, interfaces.IViewUserManualAction)
 
     weight = 300
-    title = _(u'Back to manual')
+    title = _(u'View manual')
     description = u''
 
     def __init__(self, context, request):

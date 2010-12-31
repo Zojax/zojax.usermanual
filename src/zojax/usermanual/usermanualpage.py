@@ -48,6 +48,8 @@ class UserManualPage(ContentContainer):
 
     @rwproperty.getproperty
     def fullNumber(self):
+        if IDraftedContent.providedBy(self):
+            return self.__parent__.fullNumber
         if IUserManualPage.providedBy(self.__parent__):
             return '%s.%s'%(self.__parent__.fullNumber, self.number)
         return str(self.number)
@@ -85,6 +87,8 @@ class UserManualPage(ContentContainer):
     
     @property
     def next(self):
+        if IDraftedContent.providedBy(self):
+            return None
         ob = self.__parent__.get(IOrder(self.__parent__).nextKey(self.__name__))
         if ob is not self:
             return ob
@@ -93,6 +97,8 @@ class UserManualPage(ContentContainer):
     
     @property
     def previous(self):
+        if IDraftedContent.providedBy(self):
+            return None
         ob = self.__parent__.get(IOrder(self.__parent__).previousKey(self.__name__))
         if ob is not self:
             return ob

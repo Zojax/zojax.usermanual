@@ -89,3 +89,4 @@ class ContentsTableConfig(object):
 
     def __init__(self, context, request, table):
         self.context, self.request, self.table = context, request, table
+        

@@ -76,6 +76,15 @@
      class=".usermanualpage.ContentBasicFields"
      weight="10" />
      
+  <zojax:pageelement
+     title="Content title"
+     name="content.header.title"
+     for="..interfaces.IUserManualPage"
+     template="usermanualpagetitle.pt"
+     class="zojax.content.browser.contentitem.ContentItem"
+     manager="zojax.content.browser.interfaces.IContentTitle"
+     weight="99" />
+     
   <!-- contents table -->
   <adapter name="fullNumber" factory=".usermanualpage.FullNumberColumn" />
   <adapter name="fullNumber" for="..interfaces.IUserManualPageType * zojax.content.type.interfaces.IContainerContentsTable"
