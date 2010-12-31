@@ -20,12 +20,7 @@
      title="Add user manual"
      description="Allow add new user manual to portal." />
 
-  <permission
-     id="zojax.SubmitUserManual"
-     title="Submit user manual"
-     description="Allow submit user manual to portal photo usermanual." />
-
-   <interface
+  <interface
      name="User Manuals"
      interface=".interfaces.IUserManualType"
      type="zojax.content.type.interfaces.IContentTypeType" />
@@ -71,11 +66,6 @@
 	 interface="zope.app.container.interfaces.IWriteContainer" />
     </class>
     
-    <zojax:draft
-       content="content.usermanual"
-       publish="zojax.AddUserManual"
-       submit="zojax.SubmitUserManual" />
-
     <!-- usermanual page -->
     <include file="usermanualpage.zcml" />
 
@@ -93,10 +83,6 @@
        permission="zojax.AddUserManual"
        category="zojax.content.permissions.interfaces.IAddPermission" />
 
-    <zojax:permission
-       permission="zojax.SubmitUserManual"
-       category="zojax.content.permissions.interfaces.ISubmitPermission" />
-
     <zojax:contentpermission
        permission="zojax.AddUserManual"
        for="zojax.content.space.interfaces.ISpace"
@@ -104,15 +90,6 @@
        managepermission="zojax.ManageContentPermission"
        class="zojax.content.space.permission.SpacePermission"
        category="zojax.content.permissions.interfaces.IAddPermission"
-       provides="zojax.content.space.interfaces.ISpacePermission" />
-
-    <zojax:contentpermission
-       permission="zojax.SubmitUserManual"
-       for="zojax.content.space.interfaces.IContentSpace"
-       workspace="usermanuals"
-       managepermission="zojax.ManageContentPermission"
-       class="zojax.content.space.permission.SpacePermission"
-       category="zojax.content.permissions.interfaces.ISubmitPermission"
        provides="zojax.content.space.interfaces.ISpacePermission" />
 
   </registerIn>
