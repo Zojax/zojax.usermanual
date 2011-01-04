@@ -9,7 +9,7 @@
   <tal:block tal:condition="not:view/items">
     <br />
     <p i18n:translate="">
-      No Sections have been created. If manual is in draft state, you will need to publish it prior to add sections (pages) to it.
+      No pages have been created
     </p>
   </tal:block>
 </div>
