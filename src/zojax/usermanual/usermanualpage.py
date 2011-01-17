@@ -13,8 +13,10 @@
 ##############################################################################
 import rwproperty
 from zope.component import getUtility
+from zope.security.proxy import removeSecurityProxy
 from zope.traversing.api import getParents
 from zope.app.container.interfaces import INameChooser
+
 from zojax.content.type.interfaces import IOrder, IDraftedContent, IContentType,\
     INameChooserConfiglet
 from zojax.usermanual.interfaces import IUserManualPageType, IUserManual,\
@@ -121,10 +123,11 @@ class UserManualPageDraft(DraftContent):
 
 class UserManualPageOrder(AnnotatableOrder):
     
-    component.adapts(IUserManualPage)
+    component.adapts(IUserManualPageType)
     
     def generateKey(self, item):
         keys = self.order.keys()
+        item = removeSecurityProxy(item)
         if item.number is None:
             item.number = 1
         while item.number in keys:
