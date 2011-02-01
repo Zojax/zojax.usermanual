@@ -11,20 +11,44 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-from zojax.content.draft.interfaces import IDraftContent
 """
 
 $Id$
 """
+import re
+from string import capitalize
+
 from zope import interface, schema
 from zope.i18nmessageid import MessageFactory
+from zope.schema._bootstrapinterfaces import ConstraintNotSatisfied
 
+from zojax.content.draft.interfaces import IDraftContent
 from zojax.richtext.field import RichText
 from zojax.content.type.interfaces import IItem
 from zojax.content.feeds.interfaces import IRSS2Feed
 from zojax.content.space.interfaces import IWorkspace, IWorkspaceFactory
 
 _ = MessageFactory('zojax.usermanual')
+
+
+class FullNumberValidationError(ConstraintNotSatisfied) :
+    """ Error in regexp matching """
+
+    def doc(self):
+        return capitalize(", ".join(self.args))
+    
+FULL_NUMBER_CONDITION_PARAMS = (
+        (True, re.compile(r"^(\d+\.?)+$").match, _(u"Full number must be period-separated numbers like 1.2.3")),
+        )
+
+def FULL_NUMBER_CONDITION(value):
+    res = []
+    for flag, rex, title in FULL_NUMBER_CONDITION_PARAMS:
+        if not (flag == bool(rex(value))):
+            res.append(title)
+    if res:
+        raise FullNumberValidationError(*res)
+    return True
 
 
 class IUserManualItem(IItem):
@@ -41,6 +65,7 @@ class IUserManualPage(IUserManualItem):
     
     fullNumber = schema.TextLine(title=_(u'Full Page number'),
                         description=_(u'Period-separated. Defers page position. If parent pages are not existent, they will be autocreated'),
+                        constraint=FULL_NUMBER_CONDITION
                         )
     
     position = interface.Attribute('position')
@@ -56,6 +81,7 @@ class IUserManualPageDraft(interface.Interface):
     
     fullNumber = schema.TextLine(title=_(u'Full Page number'),
                         description=_(u'Period-separated. Defers page position. If parent pages are not existent, they will be autocreated'),
+                        constraint=FULL_NUMBER_CONDITION
                         )
     
 
