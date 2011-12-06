@@ -5,22 +5,22 @@
 
   <ul tal:condition="python:context.next is not None or context.previous is not None or context.parent is not None">
     <li class="usermanual-next" tal:define="context context/next" tal:condition="python:context is not None">
-      <a tal:attributes="href string:${context/@@absolute_url}/">
+      <a tal:attributes="href string:${context/@@absolute_url}/" i18n:translate="">
         Next:
-        <tal:block tal:content="string:${context/fullNumber} ${context/title}" />
+        <tal:block tal:content="string:${context/fullNumber} ${context/title}" i18n:name="number_title"/>
       </a>
     </li>
     <li class="usermanual-previous" tal:define="context context/previous" tal:condition="python:context is not None">
-      <a tal:attributes="href string:${context/@@absolute_url}/">
+      <a tal:attributes="href string:${context/@@absolute_url}/" i18n:translate="">
         Previous:
-        <tal:block tal:content="string:${context/fullNumber} ${context/title}" />
+        <tal:block tal:content="string:${context/fullNumber} ${context/title}" i18n:name="number_title"/>
       </a>
     </li>
     <li class="usermanual-parent" tal:define="context context/parent" tal:condition="python:context is not None">
-      <a tal:attributes="href string:${context/@@absolute_url}/">
+      <a tal:attributes="href string:${context/@@absolute_url}/" i18n:translate="">
         Parent:
-        <tal:block tal:condition="not:context/fullNumber|nothing" tal:content="string:${context/title}" />
-        <tal:block tal:condition="context/fullNumber|nothing" tal:content="string:${context/fullNumber} ${context/title}" />
+        <tal:block tal:condition="not:context/fullNumber|nothing" tal:content="string:${context/title}" i18n:name="title"/>
+        <tal:block tal:condition="context/fullNumber|nothing" tal:content="string:${context/fullNumber} ${context/title}" i18n:name="number_title"/>
       </a>
     </li>
   </ul>
