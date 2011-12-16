@@ -1,0 +1,96 @@
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Corporation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Thu Dec  8 22:18:23 2011\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: src/zojax/usermanual/browser/actions.py:41
+msgid "View manual"
+msgstr ""
+
+#: src/zojax/usermanual/browser/actions.py:70
+msgid "RSS Feed"
+msgstr ""
+
+#: src/zojax/usermanual/browser/usermanual.pt:11
+msgid "No pages have been created"
+msgstr ""
+
+#: src/zojax/usermanual/browser/usermanualpage.pt:10
+msgid "Next: ${number_title}"
+msgstr ""
+
+#: src/zojax/usermanual/browser/usermanualpage.pt:16
+msgid "Previous: ${number_title}"
+msgstr ""
+
+#: src/zojax/usermanual/browser/usermanualpage.pt:23
+msgid "Parent: ${title} ${number_title}"
+msgstr ""
+
+#: src/zojax/usermanual/browser/usermanualpage.py:63
+msgid "Number"
+msgstr ""
+
+#: src/zojax/usermanual/feeds.py:39
+#: src/zojax/usermanual/workspace.py:42
+msgid "User Manuals"
+msgstr ""
+
+#: src/zojax/usermanual/feeds.py:40
+msgid "List of recently changed user manuals in current space and all sub spaces."
+msgstr ""
+
+#: src/zojax/usermanual/feeds.py:78
+msgid "List of recently changed user manual pages."
+msgstr ""
+
+#: src/zojax/usermanual/interfaces.py:41
+msgid "Full number must be period-separated numbers like 1.2.3"
+msgstr ""
+
+#: src/zojax/usermanual/interfaces.py:57
+msgid "Text"
+msgstr ""
+
+#: src/zojax/usermanual/interfaces.py:66
+#: src/zojax/usermanual/interfaces.py:82
+msgid "Full Page number"
+msgstr ""
+
+#: src/zojax/usermanual/interfaces.py:67
+#: src/zojax/usermanual/interfaces.py:83
+msgid "Period-separated. Defers page position. If parent pages are not existent, they will be autocreated"
+msgstr ""
+
+#: src/zojax/usermanual/usermanualpage.py:74
+msgid "Autocreated page"
+msgstr ""
+
+#: src/zojax/usermanual/usermanualpage.py:74
+msgid "Autocreated page description"
+msgstr ""
+
+#: src/zojax/usermanual/workspace.py:43
+msgid "Space user manuals workspace."
+msgstr ""
+
