@@ -1,0 +1,13 @@
+<div i18n:domain="zojax.usermanual" class="modalmenu">
+
+    <a tal:attributes="href string:${context/@@absolute_url}/modalcontent.html"
+               tal:content="string: ${context/title}" target="mcontent" />
+
+    <ul id="tree">
+        <tal:block tal:repeat="item view/items">
+            <tal:block define="context item"
+                       content="structure pagelet:+usermanualpage.listitem.modal" />
+        </tal:block>
+    </ul>
+
+</div>

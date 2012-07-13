@@ -24,7 +24,7 @@
      class=".usermanualpage.UserManualPageView"
      provides="zojax.content.type.interfaces.IContentView"
      permission="zope.View" />
-     
+
   <zojax:pagelet
      name="usermanualpage.listitem"
      for="..interfaces.IUserManualPage"
@@ -47,7 +47,7 @@
   <browser:defaultView
      name="index.html"
      for="..interfaces.IUserManual" />
-     
+
   <browser:defaultView
      name="index.html"
      for="..interfaces.IUserManualPage" />
@@ -59,7 +59,7 @@
      class=".usermanual.UserManualView"
      provides="zojax.content.type.interfaces.IContentView"
      permission="zope.View" />
-     
+
   <zojax:pagelet
      name="number"
      type="form.subform"
@@ -67,7 +67,7 @@
     zojax.content.forms.interfaces.IContentStep"
      class=".usermanualpage.NumberForm"
      weight="10" />
-  
+
   <zojax:pagelet
      name="basic"
      type="form.subform"
@@ -75,7 +75,7 @@
     zojax.content.forms.interfaces.IContentStep"
      class=".usermanualpage.ContentBasicFields"
      weight="10" />
-     
+
   <zojax:pageelement
      title="Content title"
      name="content.header.title"
@@ -84,7 +84,7 @@
      class="zojax.content.browser.contentitem.ContentItem"
      manager="zojax.content.browser.interfaces.IContentTitle"
      weight="99" />
-     
+
   <!-- contents table -->
   <adapter name="fullNumber" factory=".usermanualpage.FullNumberColumn" />
   <adapter name="fullNumber" for="..interfaces.IUserManualPageType * zojax.content.type.interfaces.IContainerContentsTable"
@@ -109,5 +109,44 @@
      name="zmi_icon"
      for="..interfaces.IUserManualsRSSFeed"
      file="./icons/usermanuals.png" />
+
+  <!-- modal user manual -->
+  <browser:page
+      name="modal.html"
+      for="..interfaces.IUserManual"
+      template="modal.pt"
+      permission="zope.View" />
+
+  <zojax:pagelet
+      name="modalmenu.html"
+      layout="page"
+      for="..interfaces.IUserManual"
+      template="modal-menu.pt"
+      class=".usermanual.UserManualModalView"
+      permission="zope.View" />
+
+  <zojax:pagelet
+     name="usermanualpage.listitem.modal"
+     for="..interfaces.IUserManualPage"
+     template="modal-manualpagelistitem.pt"
+     class=".usermanualpage.UserManualPageView"
+     permission="zope.View" />
+
+  <zojax:pagelet
+     name="modalcontent.html"
+     layout="page"
+     for="..interfaces.IUserManualPage"
+     template="modal-page.pt"
+     class=".usermanualpage.UserManualPageView"
+     provides="zojax.content.type.interfaces.IContentView"
+     permission="zope.View" />
+
+  <zojax:pagelet
+     name="modalcontent.html"
+     layout="page"
+     for="..interfaces.IUserManual"
+     template="modal-page.pt"
+     class=".usermanual.UserManualView"
+     permission="zope.View" />
 
 </configure>

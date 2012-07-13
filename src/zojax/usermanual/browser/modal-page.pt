@@ -1,0 +1,11 @@
+<div i18n:domain="zojax.usermanual" class="modalpage">
+
+    <h1><tal:block replace="context/fullNumber|nothing" /> <tal:block replace="context/title" /></h1>
+
+    <div class="descr" tal:condition="context/description"
+         tal:content="context/description" />
+
+    <div class="text" tal:condition="context/text"
+         tal:content="structure context/text/cooked" />
+
+</div>

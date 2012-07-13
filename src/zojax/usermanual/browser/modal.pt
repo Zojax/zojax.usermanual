@@ -1,0 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head><title tal:content="context/title"></title></head>
+
+<frameset border="0" frameborder="0" framespacing="0" cols="260,*">
+    <frame scrolling="no" marginheight="0" marginwidth="0" name="mmenu" src=""
+           tal:attributes="src string:${context/@@absolute_url}/modalmenu.html">
+    <frame scrolling="auto" name="mcontent" src="modalcontent.html"
+           tal:attributes="src string:${context/@@absolute_url}/modalcontent.html">
+</frameset>
+
+</html>

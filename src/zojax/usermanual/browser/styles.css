@@ -18,4 +18,15 @@
   background: url(usermanual-images/icon-usermanual-top.gif) no-repeat left center;
 }
 
+/* hide description */
+#tree span.description {
+  display: none;
+}
+.modalmenu {
+  padding: 7px;
+}
+.modalpage {
+  padding: 0 7px 7px 7px;
+}
+
 }

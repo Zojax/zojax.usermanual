@@ -36,7 +36,7 @@ class FullNumberValidationError(ConstraintNotSatisfied) :
 
     def doc(self):
         return capitalize(", ".join(self.args))
-    
+
 FULL_NUMBER_CONDITION_PARAMS = (
         (True, re.compile(r"^(\d+\.?)+$").match, _(u"Full number must be period-separated numbers like 1.2.3")),
         )
@@ -52,7 +52,7 @@ def FULL_NUMBER_CONDITION(value):
 
 
 class IUserManualItem(IItem):
-    
+
     text = RichText(
         title = _(u'Text'),
         required = False)
@@ -60,30 +60,30 @@ class IUserManualItem(IItem):
 
 class IUserManualPage(IUserManualItem):
     """ user manual page """
-    
+
     number = interface.Attribute('number')
-    
+
     fullNumber = schema.TextLine(title=_(u'Full Page number'),
                         description=_(u'Period-separated. Defers page position. If parent pages are not existent, they will be autocreated'),
                         constraint=FULL_NUMBER_CONDITION
                         )
-    
+
     position = interface.Attribute('position')
-    
+
     next = interface.Attribute('next')
-    
+
     previous = interface.Attribute('previous')
-    
+
     parent = interface.Attribute('parent')
-    
-    
+
+
 class IUserManualPageDraft(interface.Interface):
-    
+
     fullNumber = schema.TextLine(title=_(u'Full Page number'),
                         description=_(u'Period-separated. Defers page position. If parent pages are not existent, they will be autocreated'),
                         constraint=FULL_NUMBER_CONDITION
                         )
-    
+
 
 class IUserManualPageType(interface.Interface):
     """ user manual page content type """
@@ -93,7 +93,7 @@ class ISimpleUserManualPageType(interface.Interface):
     """ simple user manual page content type """
 
 
-class IUserManual(IItem):
+class IUserManual(IUserManualItem):
     """ user manual """
 
 

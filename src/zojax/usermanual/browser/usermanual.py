@@ -31,7 +31,7 @@ from interfaces import IUserManualPageView
 
 class UserManualView(object):
     interface.implements(IUserManualPageView)
-    
+
     items = []
 
     def update(self):
@@ -41,3 +41,26 @@ class UserManualView(object):
 
         self.url = absoluteURL(self.context, self.request)
         self.items = IOrder(self.context).values()
+
+
+class UserManualModalView(UserManualView):
+    """ class for modal view
+    """
+
+    def render(self):
+
+        includeInplaceSource(jssource, ('jquery-treeview',))
+
+        return super(UserManualModalView, self).render()
+
+
+
+jssource = """<script type="text/javascript">
+$(function() {
+    $("#tree").treeview({
+        collapsed: true,
+        animated: "medium",
+        persist: "location"
+    });
+})
+</script>"""

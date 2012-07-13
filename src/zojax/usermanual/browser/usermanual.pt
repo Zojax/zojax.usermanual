@@ -1,5 +1,8 @@
 <div i18n:domain="zojax.usermanual">
 
+  <div class="text" tal:condition="context/text"
+       tal:content="structure context/text/cooked" />
+
   <tal:block tal:repeat="item view/items">
 	<ul class="user-manual-entry">
     <tal:block define="context item" content="structure pagelet:+usermanualpage.listitem" />
