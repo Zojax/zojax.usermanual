@@ -30,4 +30,15 @@
      file="icons/usermanual.png"
      for=".interfaces.IViewUserManualAction" />
 
+  <!-- separate window view action -->
+  <adapter
+     name="usermanual.modal"
+     provides="zojax.content.actions.interfaces.IContentAction"
+     factory=".actions.UserManualModalViewAction" />
+
+  <browser:icon
+     name="zmi_icon"
+     file="icons/usermanual.png"
+     for=".interfaces.IUserManualModalViewAction" />
+
 </configure>

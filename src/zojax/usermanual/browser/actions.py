@@ -79,3 +79,23 @@ class UserManualRSSFeedAction(object):
 
     def isAvailable(self):
         return True
+
+
+class UserManualModalViewAction(object):
+    component.adapts(IUserManual, interface.Interface)
+    interface.implements(interfaces.IUserManualModalViewAction)
+
+    weight = 5
+    title = _(u'Modal View')
+    description = u''
+    target = '_blank'
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def url(self):
+        return '%s/modal.html'%absoluteURL(self.context, self.request)
+
+    def isAvailable(self):
+        return True

@@ -26,7 +26,11 @@ class IUserManualPageView(interface.Interface):
 
 class IViewUserManualAction(interface.Interface):
     """ """
-    
+
 
 class IUserManualRSSFeedAction(IContextAction):
+    """ """
+
+
+class IUserManualModalViewAction(interface.Interface):
     """ """
