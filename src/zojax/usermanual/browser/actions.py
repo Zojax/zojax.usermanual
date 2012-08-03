@@ -85,7 +85,7 @@ class UserManualModalViewAction(object):
     component.adapts(IUserManual, interface.Interface)
     interface.implements(interfaces.IUserManualModalViewAction)
 
-    weight = 5
+    weight = 99998
     title = _(u'Modal View')
     description = u''
     target = '_blank'

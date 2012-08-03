@@ -32,5 +32,5 @@ class IUserManualRSSFeedAction(IContextAction):
     """ """
 
 
-class IUserManualModalViewAction(interface.Interface):
+class IUserManualModalViewAction(IContextAction):
     """ """

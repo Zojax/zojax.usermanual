@@ -33,7 +33,6 @@
   <!-- separate window view action -->
   <adapter
      name="usermanual.modal"
-     provides="zojax.content.actions.interfaces.IContentAction"
      factory=".actions.UserManualModalViewAction" />
 
   <browser:icon
