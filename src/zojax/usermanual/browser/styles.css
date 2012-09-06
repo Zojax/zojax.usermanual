@@ -29,4 +29,11 @@
   padding: 0 7px 7px 7px;
 }
 
+.user-manual-chapters {
+  padding-top: 20px;
+}
+.user-manual-entry li {
+  font-size: 13px;
+}
+
 }

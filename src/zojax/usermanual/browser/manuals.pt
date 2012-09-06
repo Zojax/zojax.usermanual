@@ -1,0 +1,53 @@
+<div id="z-content" class="workspace-usermanuals"
+     tal:define="batch view/batch" i18n:domain="zojax.usermanual">
+
+    <h1 tal:content="context/title"></h1>
+    <div class="z-page-description" tal:condition="context/description"
+         tal:content="context/description"></div>
+
+    <tal:block content="structure batch/@@pagelet/batch.view" />
+
+    <div class="z-content-body">
+        <div class="z-table-container">
+
+            <table tal:condition="batch" class="z-table">
+                <thead>
+                    <tr>
+                        <th class="z-table-cell-min"></th>
+                        <th i18n:translate="">Title</th>
+                        <th i18n:translate="">Created</th>
+                        <th i18n:translate="">Modified</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="item batch"
+                        tal:attributes="class python:repeat['item'].odd() and
+                                        'z-table-record even' or 'z-table-record odd'">
+                        <td class="z-table-cell-min">
+                            <a href="#"
+                               tal:attributes="href string:${item/url}/modal.html">
+                                <img src="" tal:replace="structure item/icon" />
+                            </a>
+                        </td>
+                        <td>
+                            <a tal:attributes="href item/url" href="#"
+                               tal:content="item/title"></a>
+                        </td>
+                        <td>
+                            <tal:block content="structure formatter:fancyDatetime,short:item/created" />
+                        </td>
+                        <td>
+                            <tal:block content="structure formatter:fancyDatetime,short:item/modified" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div tal:condition="not:batch" i18n:translate="">
+                There are no manuals yet.
+            </div>
+
+        </div>
+    </div>
+
+</div>

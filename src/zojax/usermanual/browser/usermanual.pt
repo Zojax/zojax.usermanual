@@ -1,4 +1,4 @@
-<div i18n:domain="zojax.usermanual">
+<div class="user-manual-chapters" i18n:domain="zojax.usermanual">
 
   <div class="text" tal:condition="context/text"
        tal:content="structure context/text/cooked" />

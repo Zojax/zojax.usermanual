@@ -149,4 +149,16 @@
      class=".usermanual.UserManualView"
      permission="zope.View" />
 
+  <!-- user manuals -->
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IUserManualsWorkspace"
+     class=".manuals.UserManualsWorkspaceView"
+     template="manuals.pt"
+     permission="zope.View" />
+
+  <browser:defaultView
+     name="index.html"
+     for="..interfaces.IUserManualsWorkspace" />
+
 </configure>
