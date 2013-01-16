@@ -3,7 +3,8 @@
   <div class="text" tal:condition="context/text"
        tal:content="structure context/text/cooked" />
 
-  <ul tal:condition="python:context.next is not None or context.previous is not None or context.parent is not None">
+  <ul tal:condition="python:context.next is not None or context.previous is not None or context.parent is not None"
+      class="usermanual-navigation">
     <li class="usermanual-next" tal:define="context context/next" tal:condition="python:context is not None">
       <a tal:attributes="href string:${context/@@absolute_url}/" i18n:translate="">
         Next:

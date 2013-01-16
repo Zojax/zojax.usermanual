@@ -36,4 +36,12 @@
   font-size: 13px;
 }
 
+#z-portal-workspace .content-usermanualpage .z-content-body ul {
+  list-style-type: inherit;
+}
+ul.usermanual-navigation {
+  list-style-type: none!important;
+  padding-top: 10px;
+}
+
 }
