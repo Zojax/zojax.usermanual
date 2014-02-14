@@ -189,24 +189,18 @@ Check User Manual with two links
     >>> print actor.contents
     <html>
     ...
-    ...<h1 class="z-content-title">Test Manual [edited]</h1>
+    </div><h1 class="z-content-title">Test Manual [edited]</h1>
     ...
       <div class="z-content-description">Test Description</div>
     ...
-      	<ul class="user-manual-entry">
-        <li>
       <a href="http://localhost/space/usermanuals/test-manual/chapter/"> 1 Chapter 1</a>
-      Ut sed porttitor purus. Nunc vel nullam.
-    <BLANKLINE>
+      <span class="description">Ut sed porttitor purus. Nunc vel nullam.</span>
     </li>
     	</ul>
-       	<ul class="user-manual-entry">
+    	<ul class="user-manual-entry">
         <li>
       <a href="http://localhost/space/usermanuals/test-manual/chapter-1/"> 2 Chapter 2</a>
-      Vivamus aliquam auctor porttitor nullam.
-    <BLANKLINE>
-    </li>
-    	</ul>
+      <span class="description">Vivamus aliquam auctor porttitor nullam.</span>
     ...
     </html>
 
