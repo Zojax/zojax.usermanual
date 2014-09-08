@@ -76,6 +76,8 @@ class IUserManualPage(IUserManualItem):
 
     parent = interface.Attribute('parent')
 
+    getId = interface.Attribute('getId')
+
 
 class IUserManualPageDraft(interface.Interface):
 

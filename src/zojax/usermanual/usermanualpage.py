@@ -16,6 +16,7 @@ from zope.component import getUtility
 from zope.security.proxy import removeSecurityProxy
 from zope.traversing.api import getParents
 from zope.app.container.interfaces import INameChooser
+from zope.app.intid.interfaces import IIntIds
 
 from zojax.content.type.interfaces import IOrder, IDraftedContent, IContentType,\
     INameChooserConfiglet
@@ -55,7 +56,7 @@ class UserManualPage(ContentContainer):
         if IUserManualPage.providedBy(self.__parent__):
             return '%s.%s'%(self.__parent__.fullNumber, self.number)
         return str(self.number)
-    
+
     @rwproperty.setproperty
     def fullNumber(self, value):
         if IDraftedContent.providedBy(self):
@@ -82,11 +83,11 @@ class UserManualPage(ContentContainer):
         if IUserManualPage.providedBy(self.__parent__):
             return '%s.%s'%(self.__parent__.fullNumber, self.number)
         return str(self.number)
-    
+
     @property
     def position(self):
         return IOrder(self.__parent__).keyPosition(self.__name__)
-    
+
     @property
     def next(self):
         if IDraftedContent.providedBy(self):
@@ -96,7 +97,7 @@ class UserManualPage(ContentContainer):
             return ob
         elif len(self):
             return IOrder(self).values()[0]
-    
+
     @property
     def previous(self):
         if IDraftedContent.providedBy(self):
@@ -104,27 +105,31 @@ class UserManualPage(ContentContainer):
         ob = self.__parent__.get(IOrder(self.__parent__).previousKey(self.__name__))
         if ob is not self:
             return ob
-        
+
     @property
     def parent(self):
         if IUserManualPageType.providedBy(self.__parent__):
             return self.__parent__
-        
-        
+
+    @property
+    def getId(self):
+        return getUtility(IIntIds).getId(self)
+
+
 class UserManualPageDraft(DraftContent):
-    
+
     interface.implements(IUserManualPageDraft)
-    
+
     def publish(self, comment=u''):
         content = super(UserManualPageDraft, self).publish(comment)
         content.fullNumber = self.fullNumber
         return content
-    
+
 
 class UserManualPageOrder(AnnotatableOrder):
-    
+
     component.adapts(IUserManualPageType)
-    
+
     def generateKey(self, item):
         keys = self.order.keys()
         item = removeSecurityProxy(item)
